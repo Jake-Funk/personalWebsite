@@ -8,7 +8,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://Jake-funk.github.io/personalWebsite',
+  site: 'https://Jake-funk.github.io',
   // base: 'my-repo',
   integrations: [mdx(), sitemap(), svelte(), tailwind()],
 });
