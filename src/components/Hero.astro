@@ -7,12 +7,14 @@
       <h1 class="text-5xl font-bold">Jake Funk</h1>
       <p class="text-lg py-2">I'm a full-stack developer.</p>
       <p class="pb-6 !w-full !max-w-prose !text-wrap">
-        Take a look at some of the things I've worked on, and If
-        you have an idea for a project, I'd love to chat!
+        Take a look at some of the things I've worked on, and If you have an
+        idea for a project, I'd love to chat!
       </p>
       <div class="!w-3/4">
-        <button class="btn btn-outline btn-primary"
-        onclick="location.href='/#projects'">
+        <button
+          class="btn btn-outline btn-primary"
+          onclick="location.href='/#projects'"
+        >
           View Projects
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +30,9 @@
             ><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path>
           </svg>
         </button>
-        <button class="btn btn-outline btn-primary ml-2" onclick="location.href='/#contact'">Connect with me</button
+        <button
+          class="btn btn-outline btn-primary ml-2"
+          onclick="location.href='/#contact'">Connect with me</button
         >
       </div>
     </div>
@@ -41,9 +45,9 @@
   // modified implementation of https://codepen.io/hakimel/pen/QdWpRv
   // credit: https://github.com/hakimel
 
-  var canvas = document.querySelector("canvas")
-  var context = canvas?.getContext("2d")
-  const root = document.documentElement
+  var canvas = document.querySelector("canvas");
+  var context = canvas?.getContext("2d");
+  const root = document.documentElement;
 
   var time = 0,
     velocity = 0.01,
@@ -51,138 +55,138 @@
     width,
     height,
     lastX,
-    lastY
+    lastY;
 
-  var MAX_OFFSET = 400
-  var SPACING = 4
-  var POINTS = MAX_OFFSET / SPACING
-  var PEAK = MAX_OFFSET * 0.25
-  var POINTS_PER_LAP = 6
-  var SHADOW_STRENGTH = 6
+  var MAX_OFFSET = 400;
+  var SPACING = 4;
+  var POINTS = MAX_OFFSET / SPACING;
+  var PEAK = MAX_OFFSET * 0.25;
+  var POINTS_PER_LAP = 6;
+  var SHADOW_STRENGTH = 6;
 
-  setup()
+  setup();
 
   function setup() {
-    resize()
-    step()
+    resize();
+    step();
 
-    window.addEventListener("resize", resize)
-    window.addEventListener("mousedown", onMouseDown)
-    document.addEventListener("touchstart", onTouchStart)
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousedown", onMouseDown);
+    document.addEventListener("touchstart", onTouchStart);
   }
 
   function resize() {
-    width = canvas.width = window.innerWidth
-    height = canvas.height = window.innerHeight + 100
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight + 100;
   }
 
   function step() {
-    time += velocity
-    velocity += (velocityTarget - velocity) * 0.3
+    time += velocity;
+    velocity += (velocityTarget - velocity) * 0.3;
 
-    clear()
-    render()
+    clear();
+    render();
 
-    requestAnimationFrame(step)
+    requestAnimationFrame(step);
   }
 
   function clear() {
-    context.clearRect(0, 0, width, height)
+    context.clearRect(0, 0, width, height);
   }
 
   function render() {
     // Get the value of the DaisyUI CSS variable for primary color
-    const primaryColor = getComputedStyle(root).getPropertyValue("--p")
+    const primaryColor = getComputedStyle(root).getPropertyValue("--p");
 
     var x,
       y,
       cx = width / 2,
-      cy = height / 2
+      cy = height / 2;
 
-    context.globalCompositeOperation = "lighter"
-    context.strokeStyle = `oklch(${primaryColor})`
-    context.shadowColor = `oklch(${primaryColor})`
-    context.lineWidth = 2
-    context.beginPath()
+    context.globalCompositeOperation = "lighter";
+    context.strokeStyle = `oklch(${primaryColor})`;
+    context.shadowColor = `oklch(${primaryColor})`;
+    context.lineWidth = 2;
+    context.beginPath();
 
     for (var i = POINTS; i > 0; i--) {
-      var value = i * SPACING + (time % SPACING)
+      var value = i * SPACING + (time % SPACING);
 
       var ax = Math.sin(value / POINTS_PER_LAP) * Math.PI,
-        ay = Math.cos(value / POINTS_PER_LAP) * Math.PI
+        ay = Math.cos(value / POINTS_PER_LAP) * Math.PI;
 
-      ;(x = ax * value), (y = ay * value * 0.35)
+      (x = ax * value), (y = ay * value * 0.35);
 
-      var o = 1 - Math.min(value, PEAK) / PEAK
+      var o = 1 - Math.min(value, PEAK) / PEAK;
 
-      y -= Math.pow(o, 2) * 200
-      y += (200 * value) / MAX_OFFSET
-      y += (x / cx) * width * 0.1
+      y -= Math.pow(o, 2) * 200;
+      y += (200 * value) / MAX_OFFSET;
+      y += (x / cx) * width * 0.1;
 
-      context.globalAlpha = 1 - value / MAX_OFFSET
-      context.shadowBlur = SHADOW_STRENGTH * o
+      context.globalAlpha = 1 - value / MAX_OFFSET;
+      context.shadowBlur = SHADOW_STRENGTH * o;
 
-      context.lineTo(cx + x, cy + y)
-      context.stroke()
+      context.lineTo(cx + x, cy + y);
+      context.stroke();
 
-      context.beginPath()
-      context.moveTo(cx + x, cy + y)
+      context.beginPath();
+      context.moveTo(cx + x, cy + y);
     }
 
-    context.lineTo(cx, cy - 200)
-    context.lineTo(cx, 0)
-    context.stroke()
+    context.lineTo(cx, cy - 200);
+    context.lineTo(cx, 0);
+    context.stroke();
   }
 
   function onMouseDown(event) {
-    lastX = event.clientX
-    lastY = event.clientY
+    lastX = event.clientX;
+    lastY = event.clientY;
 
-    document.addEventListener("mousemove", onMouseMove)
-    document.addEventListener("mouseup", onMouseUp)
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
   }
 
   function onMouseMove(event) {
-    var vx = (event.clientX - lastX) / 100
-    var vy = (event.clientY - lastY) / 100
+    var vx = (event.clientX - lastX) / 100;
+    var vy = (event.clientY - lastY) / 100;
 
-    if (event.clientY < height / 2) vx *= -1
-    if (event.clientX > width / 2) vy *= -1
+    if (event.clientY < height / 2) vx *= -1;
+    if (event.clientX > width / 2) vy *= -1;
 
-    velocityTarget = vx + vy
+    velocityTarget = vx + vy;
 
-    lastX = event.clientX
-    lastY = event.clientY
+    lastX = event.clientX;
+    lastY = event.clientY;
   }
 
   function onMouseUp() {
-    document.removeEventListener("mousemove", onMouseMove)
-    document.removeEventListener("mouseup", onMouseUp)
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
   }
 
   function onTouchStart(event) {
-    lastX = event.touches[0].clientX
-    lastY = event.touches[0].clientY
+    lastX = event.touches[0].clientX;
+    lastY = event.touches[0].clientY;
 
-    document.addEventListener("touchmove", onTouchMove)
-    document.addEventListener("touchend", onTouchEnd)
+    document.addEventListener("touchmove", onTouchMove);
+    document.addEventListener("touchend", onTouchEnd);
   }
 
   function onTouchMove(event) {
-    var vx = (event.touches[0].clientX - lastX) / 100
-    var vy = (event.touches[0].clientY - lastY) / 100
+    var vx = (event.touches[0].clientX - lastX) / 100;
+    var vy = (event.touches[0].clientY - lastY) / 100;
 
-    if (event.touches[0].clientY < height / 2) vx *= -1
-    if (event.touches[0].clientX > width / 2) vy *= -1
+    if (event.touches[0].clientY < height / 2) vx *= -1;
+    if (event.touches[0].clientX > width / 2) vy *= -1;
 
-    velocityTarget = vx + vy
+    velocityTarget = vx + vy;
 
-    lastX = event.touches[0].clientX
-    lastY = event.touches[0].clientY
+    lastX = event.touches[0].clientX;
+    lastY = event.touches[0].clientY;
   }
 
   function onTouchEnd() {
-    document.removeEventListener("touchmove", onTouchMove)
-    document.removeEventListener("touchend", onTouchEnd)
+    document.removeEventListener("touchmove", onTouchMove);
+    document.removeEventListener("touchend", onTouchEnd);
   }
 </script>
