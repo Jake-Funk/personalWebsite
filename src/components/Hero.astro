@@ -3,7 +3,7 @@
     <div
       class="max-w-md [&>*]:shadow-[0px_0px_40px_40px_oklch(var(--b1))] [&>*]:w-min [&>*]:text-nowrap [&>*]:bg-base-100"
     >
-      <h4 class="text-primary text-lg font-bold">Hi my name is</h4>
+      <h4 class="text-primary text-lg font-bold">Hi, my name is</h4>
       <h1 class="text-5xl font-bold">Jake Funk</h1>
       <p class="text-lg py-2">I'm a full-stack developer.</p>
       <p class="pb-6 !w-full !max-w-prose !text-wrap">
@@ -38,7 +38,7 @@
     </div>
   </div>
 </div>
-<canvas id="canvas" class="m-auto fixed top-0 left-0 w-full -z-10"></canvas>
+<canvas id="canvas" class="m-auto fixed top-0 left-0 w-full"></canvas>
 
 <script>
   // spiral generation code
@@ -77,7 +77,7 @@
 
   function resize() {
     width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight + 100;
+    height = canvas.height = window.innerHeight;
   }
 
   function step() {
