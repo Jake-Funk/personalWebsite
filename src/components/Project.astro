@@ -10,7 +10,7 @@ const { data: proj } = Astro.props;
 const { Content } = await render(proj);
 ---
 
-<li>
+<li class="p-0">
   <h2 class="mb-0">{proj.data.title}</h2>
   <p>{proj.data.stack}</p>
   <Content />

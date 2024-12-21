@@ -13,7 +13,7 @@ const projects = await getCollection("projects");
       Please, feel free to take a look at some of the cool things I've
       developed.
     </p>
-    <ul class="prose list-none">
+    <ul class="prose list-none p-0">
       {projects.map((proj) => <Project data={proj} />)}
     </ul>
   </div>
