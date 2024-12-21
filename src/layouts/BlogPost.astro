@@ -4,6 +4,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import { Image } from "astro:assets";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -17,12 +18,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
   <body>
     <Header />
-    <main class="flex justify-center">
+    <main class="flex justify-center mb-16">
       <article class="mt-16 w-full">
         <div>
           {
             heroImage && (
-              <img
+              <Image
                 width={1020}
                 height={510}
                 src={heroImage}
