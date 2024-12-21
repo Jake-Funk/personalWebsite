@@ -12,12 +12,12 @@ const { data: proj } = Astro.props;
 const { Content } = await render(proj);
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/*.{png,mp4}",
+  "/src/assets/*.{png,gif}",
 );
 proj.data.images.forEach((path) => {
   if (!images[path])
     throw new Error(
-      `"${path}" does not exist in glob: "src/assets/*.{png,mp4}"`,
+      `"${path}" does not exist in glob: "src/assets/*.{png,gif}"`,
     );
 });
 ---
@@ -31,25 +31,13 @@ proj.data.images.forEach((path) => {
       proj.data.images.map((img) => {
         return (
           <div class="carousel-item w-full">
-            {img.endsWith(".mp4") ? (
-              <video
-                width={1020}
-                height={510}
-                src={img}
-                autoplay
-                muted
-                loop
-                class="m-auto rounded-lg"
-              />
-            ) : (
-              <Image
-                width={1020}
-                height={510}
-                src={images[img]()}
-                alt="project screenshot"
-                class="m-auto rounded-lg"
-              />
-            )}
+            <Image
+              width={1020}
+              height={510}
+              src={images[img]()}
+              alt="project screenshot"
+              class="m-auto rounded-lg"
+            />
           </div>
         );
       })
