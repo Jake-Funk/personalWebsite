@@ -11,13 +11,13 @@ const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/*.{jpg}",
+  "/src/assets/*.jpg",
 );
 
 posts.forEach((post) => {
   if (!images[post.data.heroImage])
     throw new Error(
-      `"${post.data.heroImage}" does not exist in glob: "src/assets/*.{png}"`,
+      `"${post.data.heroImage}" does not exist in glob: "src/assets/*.jpg"`,
     );
 });
 ---
