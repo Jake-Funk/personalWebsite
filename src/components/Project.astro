@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+interface Props {
+  data: CollectionEntry<"projects">;
+}
+
+const { data: proj } = Astro.props;
+const { Content } = await render(proj);
+---
+
+<li>
+  <h2 class="mb-0">{proj.data.title}</h2>
+  <p>{proj.data.stack}</p>
+  <Content />
+  <div class="carousel space-x-4">
+    {
+      proj.data.images.map((img) => {
+        return (
+          <div class="carousel-item w-full">
+            {img.endsWith(".mp4") ? (
+              <video
+                width={1020}
+                height={510}
+                src={img}
+                autoplay
+                muted
+                loop
+                class="m-auto rounded-lg"
+              />
+            ) : (
+              <img
+                width={1020}
+                height={510}
+                src={img}
+                alt="project screenshot"
+                class="m-auto rounded-lg"
+              />
+            )}
+          </div>
+        );
+      })
+    }
+  </div>
+</li>
