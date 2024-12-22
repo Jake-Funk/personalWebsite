@@ -8,8 +8,9 @@ export default {
 
   daisyui: {
     themes: [
+      "nord",
       {
-        onedark: {
+        dark: {
           primary: "#98c379",
           secondary: "#61afef",
           accent: "#c678dd",
@@ -23,7 +24,6 @@ export default {
           error: "#E06C75",
         },
       },
-      "nord",
     ],
   },
 };
