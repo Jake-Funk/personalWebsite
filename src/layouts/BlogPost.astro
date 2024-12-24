@@ -41,7 +41,7 @@ if (!images[heroImage])
             )
           }
         </div>
-        <div class="prose m-auto px-4">
+        <div class="prose m-auto mt-4 px-4">
           <div>
             <div>
               <FormattedDate date={pubDate} />
@@ -53,8 +53,8 @@ if (!images[heroImage])
                 )
               }
             </div>
-            <h1>{title}</h1>
-            <div class="divider divider-primary"></div>
+            <h1 class="mb-0">{title}</h1>
+            <div class="divider divider-primary mt-2"></div>
           </div>
           <slot />
         </div>
