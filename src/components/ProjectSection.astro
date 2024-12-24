@@ -2,7 +2,9 @@
 import { getCollection } from "astro:content";
 import Project from "./Project.astro";
 
-const projects = await getCollection("projects");
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <section class="w-full bg-base-100 px-4 pb-10">
