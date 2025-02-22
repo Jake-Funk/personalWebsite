@@ -1,0 +1,16 @@
+---
+title: "A Better Way to Write Code Reviews"
+description: "Took the holiday time off to finally tinker with some new technologies I've wanted to try."
+pubDate: "Feb 22 2025"
+heroImage: "/src/assets/blog-placeholder-3.jpg"
+---
+
+As software people, we are accustomed to the very strict and unforgiving dialect of _programming languages_. When writing code, there isn't space for ambiguity, subjectivity, or inconsistency. You are confined to write programs based off the rules and syntax laid out by the language, and those rules are consistent <a class="link-primary" href="https://en.cppreference.com/w/cpp/language/ub" target="_blank">(for the most part)</a>. 
+
+Could you imagine how terrible it would be if we had to write programs in _English_!? In english we have rules like "I before E, except after C..." which really isn't much of a rule at all because of all the exceptions: "science", "weird", "their" and the list goes on. English makes me ask a lot of silly questions like: "Why does 'through' sound like 'threw'?" and "Why does 'cough' not rhyme with 'bough' or 'though'?" or even "Why is the plural of 'house' houses, but the plural of 'mouse' is not mouses!?" You get my point, English sucks.
+
+It comes to the surprise of absolutely no one that the language is silly and makes no sense. In fact, if there ever were to be a programming language modeled after English the compiler would probably need a philosophy degree. You see, Computer scientists were able to circumvent this by inventing programming languages to abstract the more binary comprehension of machines into a very hard and fast method of communication, so why do we **still** subject ourselves to the unclear, ambiguous, and downright confusing language that is English when we leave comments on a MR?
+
+Well the first answer to that question is: we are talking to other humans, not machines. Which is a good point, but it does not resolve English of its crimes. However, a coworker recently shared with me the beauty that is <a class="link-primary" href="https://conventionalcomments.org/" target="_blank">conventional comments</a> and since then I have never looked back. For those who are not in the know, conventional comments is a framework for leaving comments on a MR in a way that feels kinda robotic but results in MUCH more clarity and encourages significantly more actionable feedback. I recommend following the link and learning about them yourself because with a few small and simple rules your comments can be elevated by a significant degree. 
+
+At first, adopting the style felt a little clunky, I'll admit, but after using it a couple times I wholeheartedly understood their purpose and found myself producing *much* better feedback for my colleges. If you find yourself asking or getting asked clarifying questions on MRs a lot, or have difficulty communicating exactly *why* a piece of code is bad, go ahead and give conventional comments a try and maybe get your team to adopt them, they have certainly helped me and my teams.  
